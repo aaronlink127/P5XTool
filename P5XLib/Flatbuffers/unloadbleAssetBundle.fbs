@@ -1,0 +1,7 @@
+namespace Zeus.Framework.Asset;
+
+table UnloadbleAssetBundle {
+    bundles:[string];
+}
+
+root_type UnloadbleAssetBundle;

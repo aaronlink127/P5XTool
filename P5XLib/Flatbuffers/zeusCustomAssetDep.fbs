@@ -1,0 +1,19 @@
+namespace Zeus.Framework.Asset;
+
+table AssetDepHashBundleFB {
+    asset_hash:uint;
+    dep_bundle_idx:[int];
+}
+
+table AssetDepPathBundleFB {
+    asset_path:string;
+    dep_bundle_idx:[int];
+}
+
+table ZeusCustomAssetDepFB {
+    dep_list_hash:[AssetDepHashBundleFB];
+    dep_list_path:[AssetDepPathBundleFB];
+    bundle_names:[string];
+}
+
+root_type ZeusCustomAssetDepFB;

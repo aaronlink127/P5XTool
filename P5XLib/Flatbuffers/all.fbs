@@ -1,0 +1,4 @@
+include "assetMap.fbs";
+include "bundleManifest.fbs";
+include "unloadbleAssetBundle.fbs";
+include "vFileContent.fbs";

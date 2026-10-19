@@ -1,0 +1,18 @@
+namespace Zeus.Framework.Asset;
+
+table AssetHashMapBundleFB {
+    hash:uint;
+    bundle:string;
+}
+
+table AssetPathMapBundleFB {
+    path:string;
+    bundle:string;
+}
+
+table AssetMapBundleFB {
+    h2b:[AssetHashMapBundleFB];
+    p2b:[AssetPathMapBundleFB];
+}
+
+root_type AssetMapBundleFB;

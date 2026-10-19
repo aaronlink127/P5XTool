@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="BundleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BundleView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CenterImgView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ConfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConfGenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DialogHeadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FSBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ObjectView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PersonaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ResourceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="SceneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ScenePreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="SpriteBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SpriteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SpriteView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ThiefControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="WaitDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

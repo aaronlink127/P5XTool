@@ -1,0 +1,14 @@
+namespace Zeus.Framework.Asset;
+
+table ZeusAssetBundle {
+    name:string;
+    hash:string;
+    dependencies:[int];
+    crc:uint;
+}
+
+table ZeusBundleManifestFB {
+    infos:[ZeusAssetBundle];
+}
+
+root_type ZeusBundleManifestFB;

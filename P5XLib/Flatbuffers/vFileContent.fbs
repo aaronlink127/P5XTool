@@ -1,0 +1,18 @@
+namespace Zeus.Core.FileSystem;
+
+table VFileEntryFB {
+    path:string;
+    offset:ulong;
+    length:uint;
+}
+
+table VFileContentEntryFB {
+    content_file:string;
+    entrys:[VFileEntryFB];
+}
+
+table VFileContentFB {
+    entrys:[VFileContentEntryFB];
+}
+
+root_type VFileContentFB;
