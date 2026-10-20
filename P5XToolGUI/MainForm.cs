@@ -14,7 +14,8 @@ namespace P5XToolGUI
 {
     public partial class MainForm : Form
     {
-        const string windowTitle = "P5X Tool";
+        const string toolTitle = "P5X Tool";
+        readonly string windowTitle = $"{toolTitle} {GetVersionString()}";
         string? gamePath;
         UserControl? rightPanel;
         public static Icon MainIcon = null!;
@@ -129,7 +130,7 @@ namespace P5XToolGUI
                 if (GameMgr.IsSea) serverName = "SEA";
                 else if (GameMgr.IsGlobal) serverName = "Global";
                 else if (GameMgr.IsCbt) serverName = "Closed Beta Test";
-                Text = $"{windowTitle} {GetVersionString()} - Game Ver. {DB.GetData<Param>("CLINET_GAME_VERSION")?.Value ?? "Unknown"} {(serverName != null ? $"({serverName})" : "")}";
+                Text = $"{windowTitle} - Game Ver. {DB.GetData<Param>("CLINET_GAME_VERSION")?.Value ?? "Unknown"}{(serverName != null ? $" ({serverName})" : "")}";
                 var thieves = DB.GetTableDict("Thief", "ConfThief");
                 var protag = DB.GetDataDict("ZhuJue", "ConfZhuJue", 101)!;
                 protag["model"] = GUtils.FixBetaString((protag["model"] as string)!);
