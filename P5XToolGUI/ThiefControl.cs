@@ -77,9 +77,8 @@ namespace P5XToolGUI
             }
             comboBox1.SelectedIndex = 0;
             tabControl.SelectedIndex = preferredTabIndex;
-            initData();
         }
-        private void initData()
+        private void InitData()
         {
             modelInit = false;
             onChangeTab();
@@ -88,24 +87,26 @@ namespace P5XToolGUI
         {
             if (tabControl.SelectedIndex == 0)
             {
-                if (!modelInit) initModelControls();
+                if (!modelInit) InitModelControls();
             }
             if (tabControl.SelectedIndex == 1) {
-                if (!resourceInit) initResourceControls();
+                if (!resourceInit) InitResourceControls();
             }
         }
-        private void initModelControls()
+        private void InitModelControls()
         {
             modelTab.Controls.Clear();
             string? selectedModel = comboBox1.SelectedItem as string;
             if (selectedModel == null) return;
-            var modelControl = new ModelControl(selectedModel);
-            modelControl.Dock = DockStyle.Fill;
+            var modelControl = new ModelControl(selectedModel)
+            {
+                Dock = DockStyle.Fill
+            };
             modelTab.Controls.Add(modelControl);
             modelInit = true;
             //var fashionData = DB.Query<ThiefModelChange>($"SELECT * FROM ConfThiefModelChange WHERE modelSn = \"{selectedModel}\"").FirstOrDefault();
         }
-        private void initResourceControls()
+        private void InitResourceControls()
         {
             resourceControl1.SuspendResources();
             string? selectedModel = comboBox1.SelectedItem as string;
@@ -147,7 +148,7 @@ namespace P5XToolGUI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            initData();
+            InitData();
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)

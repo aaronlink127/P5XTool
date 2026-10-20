@@ -9,36 +9,44 @@ using System.Threading.Tasks;
 namespace P5XTool
 {
     // I HATE THE WINDOWS CLIPBOARD
-    public class RawClipboard : IDisposable
+    public partial class RawClipboard : IDisposable
     {
         bool _disposed = false;
         public const uint CF_DIB = 8;
         private RawClipboard() {
             OpenClipboard(IntPtr.Zero);
         }
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern uint RegisterClipboardFormat(string name);
+        [LibraryImport(
+            "user32.dll",
+            EntryPoint = "RegisterClipboardFormatW",
+            StringMarshalling = StringMarshalling.Utf16,
+            SetLastError = true)]
+        static private partial uint RegisterClipboardFormat(string name);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern bool OpenClipboard(IntPtr hWndNewOwner);
+        [LibraryImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static private partial bool OpenClipboard(IntPtr hWndNewOwner);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern bool EmptyClipboard();
+        [LibraryImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static private partial bool EmptyClipboard();
 
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr SetClipboardData(uint format, IntPtr hMem);
+        [LibraryImport("user32.dll", SetLastError = true)]
+        static private partial IntPtr SetClipboardData(uint format, IntPtr hMem);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern bool CloseClipboard();
+        [LibraryImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static private partial bool CloseClipboard();
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr GlobalAlloc(uint flags, IntPtr size);
+        [LibraryImport("kernel32.dll", SetLastError = true)]
+        static private partial IntPtr GlobalAlloc(uint flags, IntPtr size);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr GlobalLock(IntPtr hMem);
+        [LibraryImport("kernel32.dll", SetLastError = true)]
+        static private partial IntPtr GlobalLock(IntPtr hMem);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool GlobalUnlock(IntPtr hMem);
+        [LibraryImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static private partial bool GlobalUnlock(IntPtr hMem);
 
         const uint GMEM_MOVEABLE = 2;
         public static RawClipboard Open()
