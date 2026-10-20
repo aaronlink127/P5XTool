@@ -8,27 +8,24 @@ using System.Threading.Tasks;
 
 namespace P5XTool
 {
-    public class Config
+    public class Config : ICloneable
     {
-        public class User : ICloneable
-        {
-            public string? AutoPath { get; set; } = string.Empty;
-            public bool AutoLoad { get; set; } = false;
-            public User Clone()
-            {
-                return (User)MemberwiseClone();
-            }
-            object ICloneable.Clone()
-            {
-                return Clone();
-            }
-        }
+        public string? AutoPath { get; set; } = string.Empty;
+        public bool AutoLoad { get; set; } = false;
+        public bool ShowConsole { get; set; } = false;
         public List<string> MRU { get; set; } = [];
-        public User UserConfig { get; set; } = new();
 
         private static Config? _instance;
-        public static Config Instance => _instance ??= LoadConfig();
+        public static Config Instance => _instance ?? LoadConfig();
         private static readonly string ConfigPath = Path.Combine(Path.GetDirectoryName(AppContext.BaseDirectory)!, "config.json");
+        public Config Clone()
+        {
+            return (Config)MemberwiseClone();
+        }
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
         private static Config LoadConfig()
         {
             if (File.Exists(ConfigPath))
@@ -36,13 +33,22 @@ namespace P5XTool
                 try
                 {
                     var deSer = JsonSerializer.Deserialize<Config>(File.ReadAllText(ConfigPath));
-                    if (deSer != null) return deSer;
+                    if (deSer != null)
+                    {
+                        _instance = deSer;
+                        ApplyConfig();
+                        return _instance;
+                    }
                 }
                 catch { }
             }
-            return new();
+            _instance = new();
+            return _instance;
         }
-
+        private static void ApplyConfig()
+        {
+            ConsoleMgr.SetVisible(Instance.ShowConsole);
+        }
         public static void Invalidate()
         {
             _instance = null;
@@ -70,19 +76,23 @@ namespace P5XTool
         }
         public static string? GetAutoLoadPath()
         {
-            var conf = Instance.UserConfig;
+            var conf = Instance;
             if (conf.AutoLoad && !string.IsNullOrEmpty(conf.AutoPath))
             {
                 return conf.AutoPath;
             }
             return null;
         }
-        public static User GetUserConfig() {
-            return Instance.UserConfig;
-        }
-        public static void SetUserConfig(User user)
+        public static void SetConfig(Config cfg)
         {
-            Instance.UserConfig = user;
+            _instance = cfg.Clone();
+            ApplyConfig();
+            SaveConfig();
+        }
+        public static void SetConsoleVisible(bool visible)
+        {
+            Instance.ShowConsole = visible;
+            ApplyConfig();
             SaveConfig();
         }
     }

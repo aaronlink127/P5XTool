@@ -1,3 +1,5 @@
+using P5XTool;
+
 namespace P5XToolGUI
 {
     internal static class Program
@@ -8,6 +10,7 @@ namespace P5XToolGUI
         [STAThread]
         static void Main()
         {
+            ConsoleMgr.Init();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

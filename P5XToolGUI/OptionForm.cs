@@ -13,30 +13,30 @@ namespace P5XToolGUI
 {
     public partial class OptionForm : Form
     {
-        public Config.User userPrefs;
+        public Config conf;
         public OptionForm()
         {
             InitializeComponent();
-            userPrefs = Config.GetUserConfig().Clone();
-            autoLoadCheck.Checked = userPrefs.AutoLoad;
-            autoPathText.Text = userPrefs.AutoPath;
+            conf = Config.Instance.Clone();
+            autoLoadCheck.Checked = conf.AutoLoad;
+            autoPathText.Text = conf.AutoPath;
             AutoCompleteStringCollection suggestions = [.. Config.GetRecents()];
             autoPathText.AutoCompleteCustomSource = suggestions;
         }
 
         private void autoLoadCheck_CheckedChanged(object sender, EventArgs e)
         {
-            userPrefs.AutoLoad = autoLoadCheck.Checked;
+            conf.AutoLoad = autoLoadCheck.Checked;
         }
 
         private void autoPathText_TextChanged(object sender, EventArgs e)
         {
-            userPrefs.AutoPath = autoPathText.Text;
+            conf.AutoPath = autoPathText.Text;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            Config.SetUserConfig(userPrefs);
+            Config.SetConfig(conf);
         }
 
         private void dirSelect_Click(object sender, EventArgs e)

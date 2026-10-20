@@ -45,8 +45,10 @@
             spriteExtractToolStripMenuItem = new ToolStripMenuItem();
             fSBrowserToolStripMenuItem = new ToolStripMenuItem();
             spriteBrowserToolStripMenuItem = new ToolStripMenuItem();
+            sceneViewerToolStripMenuItem = new ToolStripMenuItem();
             optionsToolStripMenuItem = new ToolStripMenuItem();
             setGameLanguageToolStripMenuItem = new ToolStripMenuItem();
+            showConsoleToolStripMenuItem = new ToolStripMenuItem();
             optionsToolStripMenuItem1 = new ToolStripMenuItem();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
@@ -54,7 +56,6 @@
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             timer1 = new System.Windows.Forms.Timer(components);
-            sceneViewerToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -164,9 +165,15 @@
             spriteBrowserToolStripMenuItem.Text = "Sprite Browser";
             spriteBrowserToolStripMenuItem.Click += spriteBrowserToolStripMenuItem_Click;
             // 
+            // sceneViewerToolStripMenuItem
+            // 
+            sceneViewerToolStripMenuItem.Name = "sceneViewerToolStripMenuItem";
+            sceneViewerToolStripMenuItem.Size = new Size(208, 22);
+            sceneViewerToolStripMenuItem.Text = "Scene Viewer";
+            // 
             // optionsToolStripMenuItem
             // 
-            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { setGameLanguageToolStripMenuItem, optionsToolStripMenuItem1 });
+            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { setGameLanguageToolStripMenuItem, showConsoleToolStripMenuItem, optionsToolStripMenuItem1 });
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             optionsToolStripMenuItem.Size = new Size(61, 20);
             optionsToolStripMenuItem.Text = "Options";
@@ -175,13 +182,20 @@
             // 
             setGameLanguageToolStripMenuItem.Enabled = false;
             setGameLanguageToolStripMenuItem.Name = "setGameLanguageToolStripMenuItem";
-            setGameLanguageToolStripMenuItem.Size = new Size(179, 22);
+            setGameLanguageToolStripMenuItem.Size = new Size(180, 22);
             setGameLanguageToolStripMenuItem.Text = "Set Game Language";
+            // 
+            // showConsoleToolStripMenuItem
+            // 
+            showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
+            showConsoleToolStripMenuItem.Size = new Size(180, 22);
+            showConsoleToolStripMenuItem.Text = "Show Console";
+            showConsoleToolStripMenuItem.Click += showConsoleToolStripMenuItem_Click;
             // 
             // optionsToolStripMenuItem1
             // 
             optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            optionsToolStripMenuItem1.Size = new Size(179, 22);
+            optionsToolStripMenuItem1.Size = new Size(180, 22);
             optionsToolStripMenuItem1.Text = "Options";
             optionsToolStripMenuItem1.Click += optionsToolStripMenuItem1_Click;
             // 
@@ -233,12 +247,6 @@
             timer1.Enabled = true;
             timer1.Tick += timer1_Tick;
             // 
-            // sceneViewerToolStripMenuItem
-            // 
-            sceneViewerToolStripMenuItem.Name = "sceneViewerToolStripMenuItem";
-            sceneViewerToolStripMenuItem.Size = new Size(208, 22);
-            sceneViewerToolStripMenuItem.Text = "Scene Viewer";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -288,5 +296,6 @@
         private ToolStripMenuItem fSBrowserToolStripMenuItem;
         private ToolStripMenuItem spriteBrowserToolStripMenuItem;
         private ToolStripMenuItem sceneViewerToolStripMenuItem;
+        private ToolStripMenuItem showConsoleToolStripMenuItem;
     }
 }

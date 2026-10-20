@@ -22,6 +22,7 @@ namespace P5XToolGUI
         public MainForm()
         {
             InitializeComponent();
+            showConsoleToolStripMenuItem.Checked = Config.Instance.ShowConsole;
             MainIcon = Icon!;
             Text = windowTitle;
             InitRecents();
@@ -514,6 +515,12 @@ namespace P5XToolGUI
         private void spriteBrowserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowSubWindow(new SpriteBrowser());
+        }
+
+        private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showConsoleToolStripMenuItem.Checked = !showConsoleToolStripMenuItem.Checked;
+            Config.SetConsoleVisible(showConsoleToolStripMenuItem.Checked);
         }
     };
 }
